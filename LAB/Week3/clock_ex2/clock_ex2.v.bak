@@ -1,0 +1,21 @@
+module clock_ex2(leds, pb1, pb2, clk);
+
+input clk;
+input pb1, pb2;
+output reg [7:0] leds;
+
+always @(posedge clk)
+begin
+	if(~pb1)
+		leds <=(leds<<1)+1;
+	elseif (~pb2)
+		leds <= (leds>>1);
+end
+		
+
+initial
+	begin
+	leds = 8'b1;
+	end
+
+endmodule

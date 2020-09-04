@@ -1,0 +1,16 @@
+Fitter Status : Successful - Fri Sep 04 02:12:01 2020
+Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
+Revision Name : coins
+Top-level Entity Name : coins
+Family : Cyclone IV E
+Device : EP4CE22F17C6
+Timing Models : Final
+Total logic elements : 51 / 22,320 ( < 1 % )
+    Total combinational functions : 51 / 22,320 ( < 1 % )
+    Dedicated logic registers : 17 / 22,320 ( < 1 % )
+Total registers : 17
+Total pins : 11 / 154 ( 7 % )
+Total virtual pins : 0
+Total memory bits : 0 / 608,256 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 132 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )

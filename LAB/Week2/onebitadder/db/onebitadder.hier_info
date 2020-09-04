@@ -1,0 +1,9 @@
+|onebitadder
+sw1 => leds.IN0
+sw1 => leds.IN0
+sw2 => leds.IN1
+sw2 => leds.IN1
+leds[0] <= leds.DB_MAX_OUTPUT_PORT_TYPE
+leds[1] <= leds.DB_MAX_OUTPUT_PORT_TYPE
+
+

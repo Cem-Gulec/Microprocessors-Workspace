@@ -1,0 +1,6 @@
+
+State Machine - |coins|bstate
+Name bstate.00 bstate.10 bstate.01 
+bstate.00 0 0 0 
+bstate.01 1 0 1 
+bstate.10 1 1 0 
