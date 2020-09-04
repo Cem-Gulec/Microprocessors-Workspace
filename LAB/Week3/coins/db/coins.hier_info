@@ -1,0 +1,34 @@
+|coins
+key0 => Equal0.IN0
+key0 => Equal1.IN1
+key0 => Equal2.IN1
+key1 => Equal0.IN1
+key1 => Equal1.IN0
+key1 => Equal2.IN0
+leds[0] <= leds[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+leds[1] <= leds[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+leds[2] <= leds[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+leds[3] <= leds[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+leds[4] <= leds[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+leds[5] <= leds[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+leds[6] <= leds[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+leds[7] <= leds[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clk => leds[0]~reg0.CLK
+clk => leds[1]~reg0.CLK
+clk => leds[2]~reg0.CLK
+clk => leds[3]~reg0.CLK
+clk => leds[4]~reg0.CLK
+clk => leds[5]~reg0.CLK
+clk => leds[6]~reg0.CLK
+clk => leds[7]~reg0.CLK
+clk => total[0].CLK
+clk => total[1].CLK
+clk => total[2].CLK
+clk => total[3].CLK
+clk => total[4].CLK
+clk => total[5].CLK
+clk => total[6].CLK
+clk => total[7].CLK
+clk => bstate~4.DATAIN
+
+

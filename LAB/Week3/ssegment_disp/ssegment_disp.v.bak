@@ -1,0 +1,30 @@
+module ssegment_disp(ds, grounds, display);
+
+output reg [6:0] display;
+output reg [3:0] grounds;
+input [3:0] ds;
+reg [3:0] data;
+
+always @(*)
+	begin
+		if(ds[0]==1)
+			grounds[0]=0;
+		else
+			grounds[0]=1;
+			
+		if(ds[1]==1)
+			grounds[1]=0;
+		else
+			grounds[1]=1;
+			
+		if(ds[2]==1)
+			grounds[2]=0;
+		else
+			grounds[2]=1;
+			
+		if(ds[3]==1)
+			grounds[3]=0;
+		else
+			grounds[3]=1;
+
+endmodule

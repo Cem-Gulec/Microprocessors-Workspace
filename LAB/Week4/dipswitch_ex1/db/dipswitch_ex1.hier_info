@@ -1,0 +1,34 @@
+|dipswitch_ex1
+ds[0] => check[0].DATAIN
+ds[0] => Equal1.IN31
+ds[1] => Equal1.IN30
+ds[2] => Equal1.IN29
+ds[3] => Equal1.IN28
+clk => leds[0]~reg0.CLK
+clk => leds[1]~reg0.CLK
+clk => leds[2]~reg0.CLK
+clk => leds[3]~reg0.CLK
+clk => leds[4]~reg0.CLK
+clk => leds[5]~reg0.CLK
+clk => leds[6]~reg0.CLK
+clk => leds[7]~reg0.CLK
+clk => state.CLK
+clk => ds0.CLK
+clk => check[0].CLK
+clk => check[1].CLK
+clk => check[2].CLK
+clk => check[3].CLK
+clk => check[4].CLK
+clk => check[5].CLK
+clk => check[6].CLK
+clk => check[7].CLK
+leds[0] <= leds[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+leds[1] <= leds[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+leds[2] <= leds[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+leds[3] <= leds[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+leds[4] <= leds[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+leds[5] <= leds[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+leds[6] <= leds[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+leds[7] <= leds[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
