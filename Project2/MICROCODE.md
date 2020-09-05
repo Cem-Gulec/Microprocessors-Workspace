@@ -1,7 +1,7 @@
 # Contents of Microcode Rom
 
 
-|| fetch | pcload |pcinc|armux1|armux0|regld|zfld|mux|memld|irld|pcmux|datamux|sp++|sp--|address|
+|OPCODES| fetch | pcload |pcinc|armux1|armux0|regld|zfld|mux|memld|irld|pcmux|datamux|sp++|sp--|address|
 |--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|--|
 |0 fetch| | |1| | | | | | |1| | | | |-|
 |1 LDI| | |1| | |1| |1| | | | | | |0|
