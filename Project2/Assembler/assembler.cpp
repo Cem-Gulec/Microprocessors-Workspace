@@ -240,11 +240,15 @@ main() {
                     counter++;
                 } else if (strcmp(token, "mov") == 0) {
                     //to be added
+                    op1 = strtok(NULL, "\n\t\r ");
+                    op2 = strtok(NULL, "\n\t\r ");
+                    ch = (op1[0] - 48) | ((op2[0] - 48) << 3);
+                    program[counter] = 0x7000 + ((ch)&0x00ff) + 3648;
+                    printf("MOV: %04x\n", program[counter]);
+                    counter++;
                 } else if (strcmp(token, "inc") == 0) {
                     op1 = strtok(NULL, "\n\t\r ");
                     ch = (op1[0] - 48) | ((op1[0] - 48) << 3);
-                    cout << "add op: " << op1[0] << "  after -48: " << op1[0] - 48 << endl;
-
                     program[counter] = 0x7700 + ((ch)&0x00ff);
                     counter++;
                 } else if (strcmp(token, "dec") == 0) {
