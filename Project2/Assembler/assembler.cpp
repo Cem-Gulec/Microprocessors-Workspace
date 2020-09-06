@@ -248,11 +248,17 @@ main() {
                     counter++;
                 } else if (strcmp(token, "inc") == 0) {
                     op1 = strtok(NULL, "\n\t\r ");
-                    ch = (op1[0] - 48) | ((op1[0] - 48) << 3);
-                    program[counter] = 0x7700 + ((ch)&0x00ff);
+                    ch = (op1[0] - 48) | ((op2[0] - 48) << 3);
+                    program[counter] = 0x7000 + ((ch)&0x00ff) + 3712;
+                    printf("INC: %04x\n", program[counter]);
                     counter++;
                 } else if (strcmp(token, "dec") == 0) {
                     //to be added
+                    op1 = strtok(NULL, "\n\t\r ");
+                    ch = (op1[0] - 48) | ((op2[0] - 48) << 3);
+                    program[counter] = 0x7000 + ((ch)&0x00ff) + 3776;
+                    printf("DEC: %04x\n", program[counter]);
+                    counter++;
                 } else //------WHAT IS ENCOUNTERED IS NOT AN INSTRUCTION BUT A LABEL. UPDATE THE LABEL TABLE--------
                 {
                     labeltable[nooflabels].location = counter; //read the label and update labeltable.
