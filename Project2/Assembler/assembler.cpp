@@ -26,11 +26,10 @@ int hex2int(char *hex) {
         hex++;
     }
 
-    std::cout << "<<< hex: " << hex << "  hex2int: " << result << std::endl;
     return (result);
 }
 
-main() {
+main(int argc, char *argv[]) {
     FILE *fp;
     char line[100];
     char *token = NULL;
@@ -75,7 +74,7 @@ main() {
     struct label_or_variable lditable[100];
     int noofldis = 0;
 
-    fp = fopen("example_program", "r");
+    fp = fopen(argv[1], "r");
 
     if (fp != NULL) {
         while (fgets(line, sizeof line, fp) != NULL) //skip till .code section
@@ -94,13 +93,11 @@ main() {
                 if (strcmp(token, "ldi") == 0) //---------------LDI INSTRUCTION--------------------
                 {
                     // get first and second operand respectively
-                    op1 = strtok(NULL, "\n\t\r "); //get the 1st operand of ldi, which is the register that ldi loads
-                    op2 = strtok(NULL, "\n\t\r "); //get the 2nd operand of ldi, which is the data that is to be loaded
-                    std::cout << "op1: " << op1 << "op2: " << op2 << std::endl;
+                    op1 = strtok(NULL, "\n\t\r ");            //get the 1st operand of ldi, which is the register that ldi loads
+                    op2 = strtok(NULL, "\n\t\r ");            //get the 2nd operand of ldi, which is the data that is to be loaded
                     program[counter] = 0x1000 + hex2int(op1); //generate the first 16-bit of the ldi instruction
-                    cout << "counter: " << counter << "   program[counter]: " << program[counter] << endl;
-                    counter++;                              //move to the second 16-bit of the ldi instruction
-                    if ((op2[0] == '0') && (op2[1] == 'x')) //if the 2nd operand is twos complement hexadecimal
+                    counter++;                                //move to the second 16-bit of the ldi instruction
+                    if ((op2[0] == '0') && (op2[1] == 'x'))   //if the 2nd operand is twos complement hexadecimal
                     {
                         program[counter] = hex2int(op2 + 2) & 0xffff;                     //convert it to integer and form the second 16-bit
                     } else if (((op2[0]) == '-') || ((op2[0] >= '0') && (op2[0] <= '9'))) //if the 2nd operand is decimal
@@ -115,7 +112,6 @@ main() {
                         strcpy(op1, op2);                      //in the lditable array.
                         lditable[noofldis].name = op1;
                         noofldis++;
-                        cout << "here 3 " << op1 << " \n";
                     }
                     counter++; //skip to the next memory location
                 }
@@ -126,15 +122,11 @@ main() {
                     op2 = strtok(NULL, "\n\t\r "); //get the 2nd operand of ld, which is the source register
                     // char to integer ocnversion
                     ch = (op1[0] - 48) | ((op2[0] - 48) << 3); //form bits 11-0 of machine code. 48 is ASCII value of '0'
-                    cout << "LD op1: " << op1 << "   op2: " << op2 << "   ch: " << ch << "?: " << ((ch)&0x00ff) << endl;
                     program[counter] = 0x2000 + ((ch)&0x00ff); //form the instruction and write it to memory
-                    cout << "LD CH: " << (int)ch << " - " << 0x00ff << " - " << ((ch)&0x00ff) << " - ";
                     printf("%04x\n", ((ch)&0x00ff));
                     printf("%04x\n", ch);
 
-                    cout << "LDOUT: ";
                     printf("%04x\n", program[counter]);
-                    // cout << "LDD program[counter]: " << program[counter] << endl;
 
                     counter++;                       //skip to the next empty location in memory
                 } else if (strcmp(token, "st") == 0) //-------------ST INSTRUCTION--------------------
@@ -144,9 +136,7 @@ main() {
                     // char to integer ocnversion
                     // 4 bit(?) result held by ch
                     ch = (op1[0] - 48) << 3 | ((op2[0] - 48) << 6); //form bits 11-0 of machine code. 48 is ASCII value of '0'
-                    cout << "STR op1: " << op1 << "   op2: " << op2 << "   ch: " << ch << "?: " << ((ch)&0x0fff) << endl;
-                    program[counter] = 0x3000 + ((ch)&0x00ff); //form the instruction and write it to memory
-                    cout << "STOUT: ";
+                    program[counter] = 0x3000 + ((ch)&0x00ff);      //form the instruction and write it to memory
                     printf("%04x\n", program[counter]);
                     counter++; //skip to the next empty location in memory
                     //to be added
@@ -179,7 +169,6 @@ main() {
                     op3 = strtok(NULL, "\n\t\r ");
                     chch = (op1[0] - 48) | ((op2[0] - 48) << 3) | ((op3[0] - 48) << 6);
                     program[counter] = 0x7000 + ((chch)&0x00ff);
-                    cout << "ADD op1: " << op1 << "   op2: " << op2 << "   chch: " << chch + 0x7000 << endl;
                     printf("ADD: %04x\n", program[counter]);
                     counter++;
                 } else if (strcmp(token, "sub") == 0) {
@@ -191,7 +180,6 @@ main() {
                     // op4[0] = '1';
                     chch = (op1[0] - 48) | ((op2[0] - 48) << 3) | ((op3[0] - 48) << 6);
                     program[counter] = 0x7000 + ((chch)&0x00ff) + 512;
-                    cout << "SUB op1: " << op1 << "   op2: " << op2 << "   op3: " << op3 << "   chch: " << chch << endl;
                     printf("SUB: %04x\n", program[counter]);
                     counter++;
                 } else if (strcmp(token, "and") == 0) {
@@ -204,7 +192,6 @@ main() {
                     // op4[0] = '1';
                     chch = (op1[0] - 48) | ((op2[0] - 48) << 3) | ((op3[0] - 48) << 6);
                     program[counter] = 0x7000 + ((chch)&0x00ff) + 1024;
-                    cout << "AND op1: " << op1 << "   op2: " << op2 << "   op3: " << op3 << "   chch: " << chch << endl;
                     printf("AND: %04x\n", program[counter]);
                     counter++;
                 } else if (strcmp(token, "or") == 0) {
@@ -216,7 +203,6 @@ main() {
                     // op4[0] = '1';
                     chch = (op1[0] - 48) | ((op2[0] - 48) << 3) | ((op3[0] - 48) << 6);
                     program[counter] = 0x7000 + ((chch)&0x00ff) + 2048;
-                    cout << "XOR op1: " << op1 << "   op2: " << op2 << "   op3: " << op3 << "   chch: " << chch << endl;
                     printf("XOR: %04x\n", program[counter]);
                     counter++;
                 } else if (strcmp(token, "xor") == 0) {
@@ -228,7 +214,6 @@ main() {
                     // op4[0] = '1';
                     chch = (op1[0] - 48) | ((op2[0] - 48) << 3) | ((op3[0] - 48) << 6);
                     program[counter] = 0x7000 + ((chch)&0x00ff) + 1536;
-                    cout << "XOR op1: " << op1 << "   op2: " << op2 << "   op3: " << op3 << "   chch: " << chch << endl;
                     printf("XOR: %04x\n", program[counter]);
                     counter++;
                 } else if (strcmp(token, "not") == 0) {
@@ -390,10 +375,8 @@ main() {
         fclose(fp);
         fp = fopen("RAM", "w");
         fprintf(fp, "v2.0 raw\n");
-        cout << "=====================\n";
         for (i = 0; i < counter + dataarea; i++) {
             fprintf(fp, "%04x\n", program[i]);
-            cout << program[i] << ":";
             printf("%04x  ", program[i]);
         }
     }
