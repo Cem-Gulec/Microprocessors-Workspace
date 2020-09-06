@@ -259,6 +259,13 @@ main() {
                     program[counter] = 0x7000 + ((ch)&0x00ff) + 3776;
                     printf("DEC: %04x\n", program[counter]);
                     counter++;
+                } else if (strcmp(token, "psh") == 0) {
+                    //to be added
+                    op1 = strtok(NULL, "\n\t\r ");  // register to be pushed
+                    ch = ((op1[0] - 48) << 6);
+                    program[counter] = 0x8000 + ((ch)&0x00ff);
+                    printf("PSH: %04x\n", program[counter]);
+                    counter++;
                 } else //------WHAT IS ENCOUNTERED IS NOT AN INSTRUCTION BUT A LABEL. UPDATE THE LABEL TABLE--------
                 {
                     labeltable[nooflabels].location = counter; //read the label and update labeltable.
