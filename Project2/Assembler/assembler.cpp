@@ -137,7 +137,7 @@ main(int argc, char *argv[]) {
                     // 4 bit(?) result held by ch
                     ch = (op1[0] - 48) << 3 | ((op2[0] - 48) << 6); //form bits 11-0 of machine code. 48 is ASCII value of '0'
                     program[counter] = 0x3000 + ((ch)&0x00ff);      //form the instruction and write it to memory
-                    printf("%04x\n", program[counter]);
+                    printf("ST: %04x\n", program[counter]);
                     counter++; //skip to the next empty location in memory
                     //to be added
                 } else if (strcmp(token, "jz") == 0) //------------- CONDITIONAL JUMP ------------------
@@ -233,15 +233,16 @@ main(int argc, char *argv[]) {
                     counter++;
                 } else if (strcmp(token, "inc") == 0) {
                     op1 = strtok(NULL, "\n\t\r ");
-                    ch = (op1[0] - 48) | ((op2[0] - 48) << 3);
-                    program[counter] = 0x7000 + ((ch)&0x00ff) + 3712;
+                    ch = (op1[0] - 48) | ((op1[0] - 48) << 3);
+                    program[counter] = 0x7e00 + ((ch)&0x00ff) + 128;
                     printf("INC: %04x\n", program[counter]);
+                    // 7 ____ __00 1001
                     counter++;
                 } else if (strcmp(token, "dec") == 0) {
                     //to be added
                     op1 = strtok(NULL, "\n\t\r ");
-                    ch = (op1[0] - 48) | ((op2[0] - 48) << 3);
-                    program[counter] = 0x7000 + ((ch)&0x00ff) + 3776;
+                    ch = (op1[0] - 48) | ((op1[0] - 48) << 3);
+                    program[counter] = 0x7e00 + ((ch)&0x00ff) + 192;
                     printf("DEC: %04x\n", program[counter]);
                     counter++;
                 } else if (strcmp(token, "psh") == 0) {
