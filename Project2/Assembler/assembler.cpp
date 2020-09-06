@@ -228,14 +228,15 @@ main() {
                     // op4[0] = '1';
                     chch = (op1[0] - 48) | ((op2[0] - 48) << 3) | ((op3[0] - 48) << 6);
                     program[counter] = 0x7000 + ((chch)&0x00ff) + 1536;
-                    cout << "OR op1: " << op1 << "   op2: " << op2 << "   op3: " << op3 << "   chch: " << chch << endl;
-                    printf("OR: %04x\n", program[counter]);
+                    cout << "XOR op1: " << op1 << "   op2: " << op2 << "   op3: " << op3 << "   chch: " << chch << endl;
+                    printf("XOR: %04x\n", program[counter]);
                     counter++;
                 } else if (strcmp(token, "not") == 0) {
                     op1 = strtok(NULL, "\n\t\r ");
                     op2 = strtok(NULL, "\n\t\r ");
                     ch = (op1[0] - 48) | ((op2[0] - 48) << 3);
-                    program[counter] = 0x7500 + ((ch)&0x00ff);
+                    program[counter] = 0x7000 + ((ch)&0x00ff) + 3584;
+                    printf("NOT: %04x\n", program[counter]);
                     counter++;
                 } else if (strcmp(token, "mov") == 0) {
                     //to be added
