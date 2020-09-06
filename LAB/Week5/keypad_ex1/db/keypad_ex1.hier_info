@@ -1,0 +1,28 @@
+|keypad_ex1
+rowwrite[0] <= rowwrite[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rowwrite[1] <= rowwrite[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rowwrite[2] <= rowwrite[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rowwrite[3] <= rowwrite[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+colread[0] => Equal2.IN2
+colread[0] => Equal4.IN2
+colread[0] => Equal5.IN3
+colread[0] => Equal7.IN2
+colread[1] => Equal2.IN1
+colread[1] => Equal4.IN1
+colread[1] => Equal5.IN2
+colread[1] => Equal7.IN3
+colread[2] => Equal2.IN3
+colread[2] => Equal4.IN0
+colread[2] => Equal5.IN1
+colread[2] => Equal7.IN1
+colread[3] => Equal2.IN0
+colread[3] => Equal4.IN3
+colread[3] => Equal5.IN0
+colread[3] => Equal7.IN0
+clk => clk1[18].CLK
+data[0] <= data[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data[1] <= data[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data[2] <= data[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data[3] <= data[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
