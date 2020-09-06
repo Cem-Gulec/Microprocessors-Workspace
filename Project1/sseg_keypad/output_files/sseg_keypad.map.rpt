@@ -1,5 +1,5 @@
 Analysis & Synthesis report for sseg_keypad
-Sun Sep 06 13:30:52 2020
+Sun Sep 06 22:37:45 2020
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -13,12 +13,13 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
-  9. General Register Statistics
- 10. Inverted Register Statistics
- 11. Multiplexer Restructuring Statistics (Restructuring Performed)
- 12. Elapsed Time Per Partition
- 13. Analysis & Synthesis Messages
+  8. State Machine - |sseg_keypad|state
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Elapsed Time Per Partition
+ 14. Analysis & Synthesis Messages
 
 
 
@@ -44,15 +45,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Sep 06 13:30:52 2020           ;
+; Analysis & Synthesis Status        ; Successful - Sun Sep 06 22:37:45 2020           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; sseg_keypad                                     ;
 ; Top-level Entity Name              ; sseg_keypad                                     ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; 211                                             ;
-;     Total combinational functions  ; 121                                             ;
-;     Dedicated logic registers      ; 139                                             ;
-; Total registers                    ; 139                                             ;
+; Total logic elements               ; 250                                             ;
+;     Total combinational functions  ; 175                                             ;
+;     Dedicated logic registers      ; 158                                             ;
+; Total registers                    ; 158                                             ;
 ; Total pins                         ; 24                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
@@ -173,28 +174,28 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+------------------------+
 ; Resource                                    ; Usage                  ;
 +---------------------------------------------+------------------------+
-; Estimated Total logic elements              ; 211                    ;
+; Estimated Total logic elements              ; 250                    ;
 ;                                             ;                        ;
-; Total combinational functions               ; 121                    ;
+; Total combinational functions               ; 175                    ;
 ; Logic element usage by number of LUT inputs ;                        ;
-;     -- 4 input functions                    ; 74                     ;
-;     -- 3 input functions                    ; 10                     ;
-;     -- <=2 input functions                  ; 37                     ;
+;     -- 4 input functions                    ; 78                     ;
+;     -- 3 input functions                    ; 44                     ;
+;     -- <=2 input functions                  ; 53                     ;
 ;                                             ;                        ;
 ; Logic elements by mode                      ;                        ;
-;     -- normal mode                          ; 93                     ;
-;     -- arithmetic mode                      ; 28                     ;
+;     -- normal mode                          ; 132                    ;
+;     -- arithmetic mode                      ; 43                     ;
 ;                                             ;                        ;
-; Total registers                             ; 139                    ;
-;     -- Dedicated logic registers            ; 139                    ;
+; Total registers                             ; 158                    ;
+;     -- Dedicated logic registers            ; 158                    ;
 ;     -- I/O registers                        ; 0                      ;
 ;                                             ;                        ;
 ; I/O pins                                    ; 24                     ;
 ; Embedded Multiplier 9-bit elements          ; 0                      ;
 ; Maximum fan-out node                        ; keypad_ex:kp1|clk1[15] ;
 ; Maximum fan-out                             ; 77                     ;
-; Total fan-out                               ; 753                    ;
-; Average fan-out                             ; 2.44                   ;
+; Total fan-out                               ; 958                    ;
+; Average fan-out                             ; 2.51                   ;
 +---------------------------------------------+------------------------+
 
 
@@ -203,23 +204,39 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------+--------------+
 ; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name           ; Library Name ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------+--------------+
-; |sseg_keypad               ; 121 (1)           ; 139 (19)     ; 0           ; 0            ; 0       ; 0         ; 24   ; 0            ; |sseg_keypad                  ; work         ;
+; |sseg_keypad               ; 175 (55)          ; 158 (38)     ; 0           ; 0            ; 0       ; 0         ; 24   ; 0            ; |sseg_keypad                  ; work         ;
 ;    |keypad_ex:kp1|         ; 86 (86)           ; 99 (99)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sseg_keypad|keypad_ex:kp1    ; work         ;
 ;    |sevensegment:ss1|      ; 34 (34)           ; 21 (21)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |sseg_keypad|sevensegment:ss1 ; work         ;
 +----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+----------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                         ;
-+----------------------------------------+-----------------------------------+
-; Register name                          ; Reason for Removal                ;
-+----------------------------------------+-----------------------------------+
-; sevensegment:ss1|clk1[0]               ; Merged with keypad_ex:kp1|clk1[0] ;
-; keypad_ex:kp1|clk1[16..25]             ; Lost fanout                       ;
-; sevensegment:ss1|clk1[16..25]          ; Lost fanout                       ;
-; Total Number of Removed Registers = 21 ;                                   ;
-+----------------------------------------+-----------------------------------+
+Encoding Type:  One-Hot
++-------------------------------------------+
+; State Machine - |sseg_keypad|state        ;
++----------+----------+----------+----------+
+; Name     ; state.00 ; state.10 ; state.01 ;
++----------+----------+----------+----------+
+; state.00 ; 0        ; 0        ; 0        ;
+; state.01 ; 1        ; 0        ; 1        ;
+; state.10 ; 1        ; 1        ; 0        ;
++----------+----------+----------+----------+
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; howmany_match[3]                       ; Merged with howmany_match[2]           ;
+; sevensegment:ss1|clk1[0]               ; Merged with keypad_ex:kp1|clk1[0]      ;
+; howmany_match[2]                       ; Stuck at GND due to stuck port data_in ;
+; state.01                               ; Lost fanout                            ;
+; state.10                               ; Lost fanout                            ;
+; keypad_ex:kp1|clk1[16..25]             ; Lost fanout                            ;
+; sevensegment:ss1|clk1[16..25]          ; Lost fanout                            ;
+; Total Number of Removed Registers = 25 ;                                        ;
++----------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -227,12 +244,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 139   ;
+; Total registers                              ; 158   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 40    ;
+; Number of registers using Clock Enable       ; 58    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -248,7 +265,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; sevensegment:ss1|grounds[1]            ; 2       ;
 ; sevensegment:ss1|grounds[2]            ; 2       ;
 ; sevensegment:ss1|grounds[3]            ; 2       ;
-; Total number of inverted registers = 6 ;         ;
+; total[0]                               ; 2       ;
+; Total number of inverted registers = 7 ;         ;
 +----------------------------------------+---------+
 
 
@@ -257,7 +275,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |sseg_keypad|sevensegment:ss1|Mux0 ;
+; 4:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |sseg_keypad|total[6]              ;
+; 17:1               ; 2 bits    ; 22 LEs        ; 4 LEs                ; 18 LEs                 ; Yes        ; |sseg_keypad|howmany_match[1]      ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |sseg_keypad|sevensegment:ss1|Mux3 ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |sseg_keypad|Selector3             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
 
 
@@ -276,7 +297,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sun Sep 06 13:30:50 2020
+    Info: Processing started: Sun Sep 06 22:37:43 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off sseg_keypad -c sseg_keypad
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 3 design units, including 3 entities, in source file sseg_keypad.v
@@ -285,21 +306,21 @@ Info (12021): Found 3 design units, including 3 entities, in source file sseg_ke
     Info (12023): Found entity 3: sevensegment
 Info (12127): Elaborating entity "sseg_keypad" for the top level hierarchy
 Info (12128): Elaborating entity "sevensegment" for hierarchy "sevensegment:ss1"
-Warning (10230): Verilog HDL assignment warning at sseg_keypad.v(234): truncated value with size 32 to match size of target (2)
-Warning (10230): Verilog HDL assignment warning at sseg_keypad.v(238): truncated value with size 32 to match size of target (26)
+Warning (10230): Verilog HDL assignment warning at sseg_keypad.v(320): truncated value with size 32 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at sseg_keypad.v(324): truncated value with size 32 to match size of target (26)
 Info (12128): Elaborating entity "keypad_ex" for hierarchy "keypad_ex:kp1"
-Warning (10230): Verilog HDL assignment warning at sseg_keypad.v(65): truncated value with size 32 to match size of target (26)
+Warning (10230): Verilog HDL assignment warning at sseg_keypad.v(151): truncated value with size 32 to match size of target (26)
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 20 registers lost all their fanouts during netlist optimizations.
+Info (17049): 22 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 237 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 276 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
     Info (21059): Implemented 19 output pins
-    Info (21061): Implemented 213 logic cells
+    Info (21061): Implemented 252 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 4 warnings
     Info: Peak virtual memory: 4590 megabytes
-    Info: Processing ended: Sun Sep 06 13:30:52 2020
+    Info: Processing ended: Sun Sep 06 22:37:45 2020
     Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 
