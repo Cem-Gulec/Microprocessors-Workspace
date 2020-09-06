@@ -165,7 +165,7 @@ main() {
                 } else if (strcmp(token, "jmp") == 0) //-------------- JUMP -----------------------------
                 {
                     op1 = strtok(NULL, "\n\t\r ");           //read the label string
-                    jumptable[noofjumps].location = counter; //write the jz instruction's location into the jumptable
+                    jumptable[noofjumps].location = counter; //write the jmp instruction's location into the jumptable
                     op2 = (char *)malloc(sizeof(op1));       //allocate space for the label
                     strcpy(op2, op1);                        //copy the label into the allocated space
                     jumptable[noofjumps].name = op2;         //point to the label from the jumptable
@@ -273,7 +273,18 @@ main() {
                     program[counter] = 0x9000 + ((ch)&0x00ff);
                     printf("POP: %04x\n", program[counter]);
                     counter++;
-                } else //------WHAT IS ENCOUNTERED IS NOT AN INSTRUCTION BUT A LABEL. UPDATE THE LABEL TABLE--------
+                } else if (strcmp(token, "call") == 0) {
+                    //to be added
+                    op1 = strtok(NULL, "\n\t\r ");           //read the label string
+                    jumptable[noofjumps].location = counter; //write the jmp instruction's location into the jumptable
+                    op2 = (char *)malloc(sizeof(op1));       //allocate space for the label
+                    strcpy(op2, op1);                        //copy the label into the allocated space
+                    jumptable[noofjumps].name = op2;         //point to the label from the jumptable
+                    noofjumps++;                             //skip to the next empty location in jumptable
+                    program[counter] = 0xa000;               //write the incomplete instruction (just opcode) to memory
+                    printf("CALL: %04x\n", program[counter]);
+                    counter++;                               //skip to the next empty location in memory.
+                } else                                       //------WHAT IS ENCOUNTERED IS NOT AN INSTRUCTION BUT A LABEL. UPDATE THE LABEL TABLE--------
                 {
                     labeltable[nooflabels].location = counter; //read the label and update labeltable.
                     op1 = (char *)malloc(sizeof(token));
