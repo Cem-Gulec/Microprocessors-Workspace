@@ -261,10 +261,17 @@ main() {
                     counter++;
                 } else if (strcmp(token, "psh") == 0) {
                     //to be added
-                    op1 = strtok(NULL, "\n\t\r ");  // register to be pushed
+                    op1 = strtok(NULL, "\n\t\r "); // register to be pushed
                     ch = ((op1[0] - 48) << 6);
                     program[counter] = 0x8000 + ((ch)&0x00ff);
                     printf("PSH: %04x\n", program[counter]);
+                    counter++;
+                } else if (strcmp(token, "pop") == 0) {
+                    //to be added
+                    op1 = strtok(NULL, "\n\t\r "); // register to be written into
+                    ch = ((op1[0] - 48));
+                    program[counter] = 0x9000 + ((ch)&0x00ff);
+                    printf("POP: %04x\n", program[counter]);
                     counter++;
                 } else //------WHAT IS ENCOUNTERED IS NOT AN INSTRUCTION BUT A LABEL. UPDATE THE LABEL TABLE--------
                 {
