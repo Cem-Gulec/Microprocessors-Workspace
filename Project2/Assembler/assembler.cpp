@@ -153,6 +153,15 @@ main() {
                 } else if (strcmp(token, "jz") == 0) //------------- CONDITIONAL JUMP ------------------
                 {
                     //to be added
+                    op1 = strtok(NULL, "\n\t\r ");           //read the label string
+                    jumptable[noofjumps].location = counter; //write the jz instruction's location into the jumptable
+                    op2 = (char *)malloc(sizeof(op1));       //allocate space for the label
+                    strcpy(op2, op1);                        //copy the label into the allocated space
+                    jumptable[noofjumps].name = op2;         //point to the label from the jumptable
+                    noofjumps++;                             //skip to the next empty location in jumptable
+                    program[counter] = 0x5000;               //write the incomplete instruction (just opcode) to memory
+                    printf("JZ: %04x\n", program[counter]);
+                    counter++;
                 } else if (strcmp(token, "jmp") == 0) //-------------- JUMP -----------------------------
                 {
                     op1 = strtok(NULL, "\n\t\r ");           //read the label string
