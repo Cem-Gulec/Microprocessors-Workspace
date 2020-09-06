@@ -283,8 +283,13 @@ main() {
                     noofjumps++;                             //skip to the next empty location in jumptable
                     program[counter] = 0xa000;               //write the incomplete instruction (just opcode) to memory
                     printf("CALL: %04x\n", program[counter]);
-                    counter++;                               //skip to the next empty location in memory.
-                } else                                       //------WHAT IS ENCOUNTERED IS NOT AN INSTRUCTION BUT A LABEL. UPDATE THE LABEL TABLE--------
+                    counter++; //skip to the next empty location in memory.
+                } else if (strcmp(token, "ret") == 0) {
+                    //to be added
+                    program[counter] = 0xb000; //write the incomplete instruction (just opcode) to memory
+                    printf("RET: %04x\n", program[counter]);
+                    counter++; //skip to the next empty location in memory.
+                } else         //------WHAT IS ENCOUNTERED IS NOT AN INSTRUCTION BUT A LABEL. UPDATE THE LABEL TABLE--------
                 {
                     labeltable[nooflabels].location = counter; //read the label and update labeltable.
                     op1 = (char *)malloc(sizeof(token));
