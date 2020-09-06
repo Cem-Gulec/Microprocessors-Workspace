@@ -179,9 +179,21 @@ main() {
                     op3 = strtok(NULL, "\n\t\r ");
                     chch = (op1[0] - 48) | ((op2[0] - 48) << 3) | ((op3[0] - 48) << 6);
                     program[counter] = 0x7000 + ((chch)&0x00ff);
+                    cout << "ADD op1: " << op1 << "   op2: " << op2 << "   chch: " << chch + 0x7000 << endl;
+                    printf("ADD: %04x\n", program[counter]);
                     counter++;
                 } else if (strcmp(token, "sub") == 0) {
                     //to be added
+                    op1 = strtok(NULL, "\n\t\r ");
+                    op2 = strtok(NULL, "\n\t\r ");
+                    op3 = strtok(NULL, "\n\t\r ");
+                    // char op4[1];
+                    // op4[0] = '1';
+                    chch = (op1[0] - 48) | ((op2[0] - 48) << 3) | ((op3[0] - 48) << 6);
+                    program[counter] = 0x7000 + ((chch)&0x00ff) + 512;
+                    cout << "SUB op1: " << op1 << "   op2: " << op2 << "   op3: " << op3 << "   chch: " << chch << endl;
+                    printf("SUB: %04x\n", program[counter]);
+                    counter++;
                 } else if (strcmp(token, "and") == 0) {
                     //to be added
                 } else if (strcmp(token, "or") == 0) {
