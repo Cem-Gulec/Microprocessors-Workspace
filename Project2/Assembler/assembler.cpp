@@ -196,7 +196,7 @@ main() {
                     counter++;
                 } else if (strcmp(token, "and") == 0) {
                     //to be added
-                     //to be added
+                    //to be added
                     op1 = strtok(NULL, "\n\t\r ");
                     op2 = strtok(NULL, "\n\t\r ");
                     op3 = strtok(NULL, "\n\t\r ");
@@ -209,8 +209,28 @@ main() {
                     counter++;
                 } else if (strcmp(token, "or") == 0) {
                     //to be added
+                    op1 = strtok(NULL, "\n\t\r ");
+                    op2 = strtok(NULL, "\n\t\r ");
+                    op3 = strtok(NULL, "\n\t\r ");
+                    // char op4[1];
+                    // op4[0] = '1';
+                    chch = (op1[0] - 48) | ((op2[0] - 48) << 3) | ((op3[0] - 48) << 6);
+                    program[counter] = 0x7000 + ((chch)&0x00ff) + 2048;
+                    cout << "XOR op1: " << op1 << "   op2: " << op2 << "   op3: " << op3 << "   chch: " << chch << endl;
+                    printf("XOR: %04x\n", program[counter]);
+                    counter++;
                 } else if (strcmp(token, "xor") == 0) {
                     //to be added
+                    op1 = strtok(NULL, "\n\t\r ");
+                    op2 = strtok(NULL, "\n\t\r ");
+                    op3 = strtok(NULL, "\n\t\r ");
+                    // char op4[1];
+                    // op4[0] = '1';
+                    chch = (op1[0] - 48) | ((op2[0] - 48) << 3) | ((op3[0] - 48) << 6);
+                    program[counter] = 0x7000 + ((chch)&0x00ff) + 1536;
+                    cout << "OR op1: " << op1 << "   op2: " << op2 << "   op3: " << op3 << "   chch: " << chch << endl;
+                    printf("OR: %04x\n", program[counter]);
+                    counter++;
                 } else if (strcmp(token, "not") == 0) {
                     op1 = strtok(NULL, "\n\t\r ");
                     op2 = strtok(NULL, "\n\t\r ");
