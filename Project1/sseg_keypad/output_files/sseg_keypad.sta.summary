@@ -3,27 +3,27 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'clk'
-Slack : -2.024
-TNS   : -87.951
+Slack : -1.930
+TNS   : -89.445
 
 Type  : Slow 1200mV 85C Model Setup 'keypad_ex:kp1|clk1[15]'
-Slack : -1.225
-TNS   : -28.028
+Slack : -1.124
+TNS   : -26.134
 
 Type  : Slow 1200mV 85C Model Setup 'sevensegment:ss1|clk1[15]'
-Slack : 0.186
+Slack : 0.192
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'clk'
-Slack : -0.099
-TNS   : -0.099
+Slack : -0.055
+TNS   : -0.105
 
 Type  : Slow 1200mV 85C Model Hold 'sevensegment:ss1|clk1[15]'
 Slack : 0.358
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'keypad_ex:kp1|clk1[15]'
-Slack : 0.379
+Slack : 0.378
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
@@ -39,27 +39,27 @@ Slack : -1.000
 TNS   : -6.000
 
 Type  : Slow 1200mV 0C Model Setup 'clk'
-Slack : -1.653
-TNS   : -70.826
+Slack : -1.617
+TNS   : -72.494
 
 Type  : Slow 1200mV 0C Model Setup 'keypad_ex:kp1|clk1[15]'
-Slack : -0.985
-TNS   : -21.727
+Slack : -0.880
+TNS   : -19.494
 
 Type  : Slow 1200mV 0C Model Setup 'sevensegment:ss1|clk1[15]'
-Slack : 0.269
+Slack : 0.275
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'clk'
-Slack : -0.053
-TNS   : -0.053
+Slack : -0.021
+TNS   : -0.042
 
 Type  : Slow 1200mV 0C Model Hold 'sevensegment:ss1|clk1[15]'
 Slack : 0.312
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'keypad_ex:kp1|clk1[15]'
-Slack : 0.344
+Slack : 0.345
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
@@ -75,32 +75,32 @@ Slack : -1.000
 TNS   : -6.000
 
 Type  : Fast 1200mV 0C Model Setup 'clk'
-Slack : -0.723
-TNS   : -20.217
+Slack : -0.673
+TNS   : -21.425
 
 Type  : Fast 1200mV 0C Model Setup 'keypad_ex:kp1|clk1[15]'
-Slack : -0.252
-TNS   : -3.901
+Slack : -0.194
+TNS   : -1.269
 
 Type  : Fast 1200mV 0C Model Setup 'sevensegment:ss1|clk1[15]'
-Slack : 0.548
+Slack : 0.549
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'clk'
-Slack : -0.058
-TNS   : -0.058
+Slack : -0.041
+TNS   : -0.081
 
 Type  : Fast 1200mV 0C Model Hold 'sevensegment:ss1|clk1[15]'
-Slack : 0.188
+Slack : 0.187
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'keypad_ex:kp1|clk1[15]'
-Slack : 0.197
+Slack : 0.196
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -83.321
+TNS   : -83.804
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'keypad_ex:kp1|clk1[15]'
 Slack : -1.000

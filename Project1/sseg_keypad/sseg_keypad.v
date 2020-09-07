@@ -16,7 +16,7 @@ wire ready;
 
 reg [15:0] total;
 reg [1:0] state;
-reg [3:0] howmany_match;
+reg [15:0] howmany_match;
 
 assign data=keyout;
 	
@@ -30,10 +30,11 @@ always @(posedge clk)
 always @(posedge clk)
 	if (ready_buffer==2'b01)
 		begin
-			if(keyout == 4'hE || keyout == 4'hF)
-				data_all<= total;
+			if(keyout==4'hF)
+				data_all<=data_all-total;
+			else if(keyout==4'hE)
+				data_all<=data_all;
 			else
-				
 				data_all<={data_all[11:0],keyout};
 			ack<=1;
 		end
@@ -46,11 +47,10 @@ always @(posedge clk)
 			2'b00:
 				begin
 					case(keyout)
-						4'hE: state <= 2'b01;
-						default:
+						4'hE: 
 							begin
 								total <= data_all;
-								state <= 2'b00;
+								state <= 2'b01;
 							end
 					endcase
 				end
@@ -58,19 +58,19 @@ always @(posedge clk)
 			2'b01:
 				begin
 					case(keyout)
-						4'h1:
+						4'h1: 
 							begin
-								howmany_match <= 1;
+								howmany_match <= 16'b01;
 								state <= 2'b01;
 							end
-						4'h2:
+						4'h2: 
 							begin
-								howmany_match <= 2;
+								howmany_match <= 16'b10;
 								state <= 2'b01;
 							end
-						4'h3:
+						4'h3: 
 							begin
-								howmany_match <= 3;
+								howmany_match <= 16'b11;
 								state <= 2'b01;
 							end
 						4'hF:
@@ -78,26 +78,25 @@ always @(posedge clk)
 								total <= total - howmany_match;
 								state <= 2'b10;
 							end
-					
 					endcase		
 				end
 				
 			2'b10:
 				begin
 					case(keyout)
-						4'h1:
+						4'h1: 
 							begin
-								howmany_match <= 1;
+								howmany_match <= 16'b01;
 								state <= 2'b10;
 							end
-						4'h2:
+						4'h2: 
 							begin
-								howmany_match <= 2;
+								howmany_match <= 16'b10;
 								state <= 2'b10;
 							end
-						4'h3:
+						4'h3: 
 							begin
-								howmany_match <= 3;
+								howmany_match <= 16'b11;
 								state <= 2'b10;
 							end
 						4'hF:
@@ -105,13 +104,13 @@ always @(posedge clk)
 								total <= total - howmany_match;
 								state <= 2'b01;
 							end
-					
 					endcase		
 				end
 				
+			
 				
 				
-		
+			default: state <= state;
 		endcase
 	end
 			
@@ -121,7 +120,6 @@ initial
 		data_all=0;
 		ack=0;
 		state=2'b0;
-		total=1;
 	end
 
 endmodule
