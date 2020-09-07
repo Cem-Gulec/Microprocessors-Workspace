@@ -1,0 +1,26 @@
+.data
+	lim:7
+.code
+	ldi 0 0
+	ldi 1 1
+	ldi 5 1
+loop	and 3 5 1
+	jz even
+	jmp odd
+even	ldi 2 0
+	ldi 3 1
+	jmp mult
+mult    add 0 1 0
+	add 2 2 3
+	sub 4 1 2
+	jz inc
+	jmp mult
+odd	add 0 0 1
+	jmp inc
+inc	sub 2 lim 1
+	jz exit
+	ldi 2 1
+	add 1 1 2
+	jmp loop
+exit
+	jmp exit
