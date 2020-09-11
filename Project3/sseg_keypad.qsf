@@ -18,7 +18,7 @@
 #
 # Quartus II 64-Bit
 # Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-# Date created = 12:26:19  September 05, 2020
+# Date created = 17:55:33  September 11, 2020
 #
 # -------------------------------------------------------------------------- #
 #
@@ -40,7 +40,7 @@ set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE22F17C6
 set_global_assignment -name TOP_LEVEL_ENTITY sseg_keypad
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "12:26:19  SEPTEMBER 05, 2020"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:55:33  SEPTEMBER 11, 2020"
 set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
@@ -48,34 +48,4 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
 set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
 set_global_assignment -name VERILOG_FILE sseg_keypad.v
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
-set_location_assignment PIN_R8 -to clk
-set_location_assignment PIN_B12 -to colread[3]
-set_location_assignment PIN_D11 -to colread[2]
-set_location_assignment PIN_B11 -to colread[1]
-set_location_assignment PIN_E10 -to colread[0]
-set_location_assignment PIN_A11 -to data[3]
-set_location_assignment PIN_B13 -to data[2]
-set_location_assignment PIN_A13 -to data[1]
-set_location_assignment PIN_A15 -to data[0]
-set_location_assignment PIN_F8 -to display[6]
-set_location_assignment PIN_D8 -to display[5]
-set_location_assignment PIN_E6 -to display[4]
-set_location_assignment PIN_C6 -to display[3]
-set_location_assignment PIN_D6 -to display[2]
-set_location_assignment PIN_A6 -to display[1]
-set_location_assignment PIN_D5 -to display[0]
-set_location_assignment PIN_B4 -to grounds[3]
-set_location_assignment PIN_A3 -to grounds[2]
-set_location_assignment PIN_C3 -to grounds[1]
-set_location_assignment PIN_D3 -to grounds[0]
-set_location_assignment PIN_D12 -to rowwrite[3]
-set_location_assignment PIN_A12 -to rowwrite[2]
-set_location_assignment PIN_C11 -to rowwrite[1]
-set_location_assignment PIN_E11 -to rowwrite[0]
-set_global_assignment -name VERILOG_FILE keypad_ex.v
-set_global_assignment -name VERILOG_FILE sevensegment.v
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VERILOG_FILE bird.v
