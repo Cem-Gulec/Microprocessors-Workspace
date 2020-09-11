@@ -1,5 +1,5 @@
 Flow report for sseg_keypad
-Mon Sep 07 04:53:59 2020
+Fri Sep 11 18:00:53 2020
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,7 +40,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Mon Sep 07 04:53:55 2020           ;
+; Flow Status                        ; Successful - Fri Sep 11 18:00:49 2020           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; sseg_keypad                                     ;
 ; Top-level Entity Name              ; sseg_keypad                                     ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 09/07/2020 04:53:42 ;
+; Start date & time ; 09/11/2020 18:00:32 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; sseg_keypad         ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                           ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+---------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 220295163372494.159944362108132 ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 220295163372494.159983643214552 ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                              ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                               ; --            ; --          ; --         ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                            ; --            ; --          ; --         ;
@@ -92,10 +92,10 @@ applicable agreement for further details.
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Analysis & Synthesis      ; 00:00:02     ; 1.0                     ; 4580 MB             ; 00:00:02                           ;
-; Fitter                    ; 00:00:08     ; 1.0                     ; 4941 MB             ; 00:00:08                           ;
+; Fitter                    ; 00:00:10     ; 1.0                     ; 4937 MB             ; 00:00:08                           ;
 ; Assembler                 ; 00:00:02     ; 1.0                     ; 4552 MB             ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:03     ; 1.0                     ; 4626 MB             ; 00:00:03                           ;
-; Total                     ; 00:00:15     ; --                      ; --                  ; 00:00:15                           ;
+; TimeQuest Timing Analyzer ; 00:00:03     ; 1.0                     ; 4631 MB             ; 00:00:03                           ;
+; Total                     ; 00:00:17     ; --                      ; --                  ; 00:00:15                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

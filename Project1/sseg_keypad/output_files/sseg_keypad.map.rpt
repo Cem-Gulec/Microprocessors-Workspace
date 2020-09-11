@@ -1,5 +1,5 @@
 Analysis & Synthesis report for sseg_keypad
-Mon Sep 07 04:53:43 2020
+Fri Sep 11 18:00:35 2020
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -45,7 +45,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Mon Sep 07 04:53:43 2020           ;
+; Analysis & Synthesis Status        ; Successful - Fri Sep 11 18:00:35 2020           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; sseg_keypad                                     ;
 ; Top-level Entity Name              ; sseg_keypad                                     ;
@@ -160,13 +160,15 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                     ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                       ; Library ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------------------------------+---------+
-; sseg_keypad.v                    ; yes             ; User Verilog HDL File  ; C:/Users/Cem/Documents/GitHub/CSE4117-Microprocessors-Workspace/Project1/sseg_keypad/sseg_keypad.v ;         ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                      ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                        ; Library ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------+---------+
+; sseg_keypad.v                    ; yes             ; User Verilog HDL File  ; C:/Users/Cem/Documents/GitHub/CSE4117-Microprocessors-Workspace/Project1/sseg_keypad/sseg_keypad.v  ;         ;
+; keypad_ex.v                      ; yes             ; User Verilog HDL File  ; C:/Users/Cem/Documents/GitHub/CSE4117-Microprocessors-Workspace/Project1/sseg_keypad/keypad_ex.v    ;         ;
+; sevensegment.v                   ; yes             ; User Verilog HDL File  ; C:/Users/Cem/Documents/GitHub/CSE4117-Microprocessors-Workspace/Project1/sseg_keypad/sevensegment.v ;         ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------+---------+
 
 
 +----------------------------------------------------------------------+
@@ -297,19 +299,21 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Sep 07 04:53:41 2020
+    Info: Processing started: Fri Sep 11 18:00:32 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off sseg_keypad -c sseg_keypad
 Warning (20028): Parallel compilation is not licensed and has been disabled
-Info (12021): Found 3 design units, including 3 entities, in source file sseg_keypad.v
+Info (12021): Found 1 design units, including 1 entities, in source file sseg_keypad.v
     Info (12023): Found entity 1: sseg_keypad
-    Info (12023): Found entity 2: keypad_ex
-    Info (12023): Found entity 3: sevensegment
+Info (12021): Found 1 design units, including 1 entities, in source file keypad_ex.v
+    Info (12023): Found entity 1: keypad_ex
+Info (12021): Found 1 design units, including 1 entities, in source file sevensegment.v
+    Info (12023): Found entity 1: sevensegment
 Info (12127): Elaborating entity "sseg_keypad" for the top level hierarchy
 Info (12128): Elaborating entity "sevensegment" for hierarchy "sevensegment:ss1"
-Warning (10230): Verilog HDL assignment warning at sseg_keypad.v(318): truncated value with size 32 to match size of target (2)
-Warning (10230): Verilog HDL assignment warning at sseg_keypad.v(322): truncated value with size 32 to match size of target (26)
+Warning (10230): Verilog HDL assignment warning at sevensegment.v(15): truncated value with size 32 to match size of target (2)
+Warning (10230): Verilog HDL assignment warning at sevensegment.v(19): truncated value with size 32 to match size of target (26)
 Info (12128): Elaborating entity "keypad_ex" for hierarchy "keypad_ex:kp1"
-Warning (10230): Verilog HDL assignment warning at sseg_keypad.v(149): truncated value with size 32 to match size of target (26)
+Warning (10230): Verilog HDL assignment warning at keypad_ex.v(22): truncated value with size 32 to match size of target (26)
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 22 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
@@ -320,8 +324,8 @@ Info (21057): Implemented 261 device resources after synthesis - the final resou
     Info (21061): Implemented 237 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 4 warnings
     Info: Peak virtual memory: 4590 megabytes
-    Info: Processing ended: Mon Sep 07 04:53:43 2020
-    Info: Elapsed time: 00:00:02
+    Info: Processing ended: Fri Sep 11 18:00:35 2020
+    Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:02
 
 
