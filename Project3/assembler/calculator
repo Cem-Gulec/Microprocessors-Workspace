@@ -1,0 +1,60 @@
+.data
+	KEYPAD_DATA 0x900
+	KEYPAD_STATUS 0x901
+	SEVENSEG 0xb00
+.code
+
+        ld 6 0
+
+begin	ldi 0 KEYPAD_STATUS
+		ld  0 0
+		ldi 1 0x01
+		and 1 1 0
+		jz begin
+		ldi 2 KEYPAD_DATA
+		ld  2 2
+		ldi 3 0x0F
+		sub 3 3 2
+		jz addProc
+		ldi 3 0x0E
+		sub 3 3 2
+		jz multProc
+		jmp anythingElse
+
+addProc   call addit
+		  jmp begin
+
+multProc  sub 0 0 0
+		  mov 3 6
+		  call mult
+		  jmp begin
+
+addit     add 4 4 6
+		  sub 6 6 6
+		  ldi 0 SEVENSEG
+		  st 0 4
+		  ret	
+
+mult      add 0 0 4
+		  dec 3
+		  jz load
+		  jmp mult
+
+anythingElse  ldi 3 0x0a
+		      ldi 0 0x00
+templabel     add 0 0 6
+		      dec 3
+		      jz loadValue
+		      jmp templabel
+
+load      mov 4 0
+		  ldi 6 0x00
+		  ldi 3 0x00
+		  ldi 0 SEVENSEG
+		  st 0 4
+		  ret
+
+loadValue   add 6 0 2
+		    ldi 0 SEVENSEG
+		    st  0 6
+		    jmp begin
